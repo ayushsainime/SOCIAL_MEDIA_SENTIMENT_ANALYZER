@@ -62,22 +62,28 @@ No Python installation or environment setup is required.
 step 1 
 
 OPEN THE TERMINAL IN DOCKER AND PASTE-
-
+```bash
 docker pull ayushsainime/twitter-reddit-nlp:1.0
+```
 
 STEP 2 
 RUN THE IMAGE : 
+```
 docker run -p 8000:8000 -p 8501:8501 ayushsaini/twitter-reddit-nlp:latest
-
+```
 
 Step 3 Open in Browser
 
 Streamlit frontend
+
+```
 http://localhost:8501
-
+```
 FastAPI documentation
-http://localhost:8000/docs
 
+```
+http://localhost:8000/docs
+```
 ---
 
 ### 🧪 How to Use the Application
