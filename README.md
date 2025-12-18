@@ -2,6 +2,10 @@
 
 An end to end NLP application for classifying social media text using multiple machine learning models, exposed through a FastAPI backend and an interactive Streamlit frontend, fully containerized using Docker.
 
+<img width="1911" height="972" alt="Screenshot 2025-12-18 144738" src="https://github.com/user-attachments/assets/4e960cef-99bf-4552-8917-0c52a7e44a21" />
+
+<img width="1910" height="974" alt="Screenshot 2025-12-18 144747" src="https://github.com/user-attachments/assets/d3cbadf0-1123-47c7-a4ad-966a0f8996d1" />
+
 ---
 
 ## 📌 Project Overview
