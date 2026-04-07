@@ -1,0 +1,25 @@
+# Core Project Dependencies
+lightgbm==4.5.0
+xgboost==2.1.3
+wordcloud==1.9.3
+
+# Data Science Core (locked for reproducibility)
+numpy==2.1.2
+pandas==2.2.3
+matplotlib==3.9.2
+seaborn==0.13.2
+nltk==3.9.1
+scikit-learn==1.5.2
+spacy==3.8.4
+
+# Utility/Other Libraries
+joblib==1.4.2
+contractions==0.1.73
+scikit-plot==0.3.7
+
+# Web Framework
+fastapi==0.115.6
+uvicorn==0.34.0
+pydantic==2.10.4
+reflex==0.6.7
+requests==2.32.3

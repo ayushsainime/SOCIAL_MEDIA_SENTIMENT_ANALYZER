@@ -1,2 +1,36 @@
+# Environment files
 .env
-old project
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+*.manifest
+
+# Data
+*.csv
+# Note: *.pkl files are now tracked via Git LFS (see .gitattributes)
+
+# Notebooks
+.ipynb_checkpoints
+.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Distribution
+dist/
+build/
+*.egg-info
+
+# Project folders
+old project/
+media

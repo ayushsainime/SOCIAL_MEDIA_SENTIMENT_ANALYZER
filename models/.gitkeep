@@ -1,0 +1,9 @@
+# Models folder
+# Pre-trained ML models will be stored here
+# - tfidf_vectorizer.pkl
+# - svm_model.pkl
+# - random_forest_model.pkl
+# - logistic_regression_model.pkl
+# - gradient_boosting_model.pkl
+# - lgbm_model.pkl
+# - ada_boost_model.pkl
