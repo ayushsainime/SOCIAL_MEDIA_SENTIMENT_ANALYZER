@@ -1,6 +1,6 @@
 # Environment files
 .env
-
+.venv
 # Python
 __pycache__/
 *.py[cod]
@@ -8,6 +8,7 @@ __pycache__/
 *.egg
 *.egg-info/
 *.manifest
+
 
 # Data
 *.csv
@@ -34,3 +35,10 @@ build/
 # Project folders
 old project/
 media
+
+assets/external/
+*.db
+.web
+*.py[cod]
+.states
+__pycache__/

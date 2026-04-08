@@ -1,4 +1,4 @@
-# 🎭 Social Media Sentiment Analyzer
+#  Social Media Sentiment Analyzer
 
 A powerful machine learning web application for analyzing sentiment in social media text. Built with FastAPI backend and Reflex frontend, featuring multiple ML models, word cloud generation, and model comparison capabilities.
 
@@ -9,18 +9,18 @@ A powerful machine learning web application for analyzing sentiment in social me
 
 ---
 
-## ✨ Features
+##  Features
 
 - **🔍 Single Model Analysis** - Analyze text sentiment using your preferred ML model
-- **📊 Model Comparison** - Compare predictions from all 5 models simultaneously
-- **📈 Confidence Scores** - View prediction confidence percentages with visual progress bars
-- **☁️ Word Cloud Generation** - Generate beautiful word clouds from input text
-- **📜 Prediction History** - Track your last 10 predictions in the session
-- **🐳 Docker Ready** - Fully containerized for easy deployment
+- **Model Comparison** - Compare predictions from all 5 models simultaneously
+- **Confidence Scores** - View prediction confidence percentages with visual progress bars
+- **Word Cloud Generation** - Generate beautiful word clouds from input text
+- **Prediction History** - Track your last 10 predictions in the session
+- **Docker Ready** - Fully containerized for easy deployment
 
 ---
 
-## 🤖 Available Models
+## Available Models
 
 | Model | Description |
 |-------|-------------|
@@ -32,7 +32,7 @@ A powerful machine learning web application for analyzing sentiment in social me
 
 ---
 
-## 📋 Sentiment Labels
+## Sentiment Labels
 
 | Label | Value |
 |-------|-------|
@@ -42,19 +42,19 @@ A powerful machine learning web application for analyzing sentiment in social me
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 social-media-sentiment-analyzer/
-├── 📁 backend/
+├── backend/
 │   ├── __init__.py
 │   ├── main.py              # FastAPI application & endpoints
 │   ├── models_loader.py     # Model loading utilities
 │   └── preprocess.py        # Text preprocessing functions
-├── 📁 frontend/
+├──  frontend/
 │   ├── __init__.py
-│   └── app.py               # Reflex frontend application
-├── 📁 models/               # Pre-trained ML models (Git LFS)
+│   └── frontend.py          # Reflex frontend application
+├──  models/               # Pre-trained ML models (Git LFS)
 │   ├── tfidf_vectorizer.pkl
 │   ├── svm_model.pkl
 │   ├── random_forest_model.pkl
@@ -73,7 +73,7 @@ social-media-sentiment-analyzer/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -108,6 +108,8 @@ social-media-sentiment-analyzer/
 
 4. **Install dependencies**
    ```bash
+   # IMPORTANT: Install Reflex first (it manages pydantic/sqlmodel compatibility)
+   pip install reflex
    pip install -r requirements.txt
    python -m spacy download en_core_web_sm
    ```
@@ -116,17 +118,18 @@ social-media-sentiment-analyzer/
    
    **Option A: Run separately (Development)**
    ```bash
-   # Terminal 1 - Start backend
-   uvicorn backend.main:app --reload --port 8000
+   # Terminal 1 - Start backend (from project root)
+   uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
    
-   # Terminal 2 - Start frontend
-   cd frontend && reflex run --port 3000
+   # Terminal 2 - Start Reflex app (from project root)
+   # Reflex backend is on 8001 to avoid conflict with FastAPI (8000)
+   reflex run --frontend-port 3000 --backend-port 8001
    ```
    
    **Option B: Run with Docker (Production)**
    ```bash
-   docker build -t sentiment-analyzer .
-   docker run -p 8000:8000 -p 3000:3000 sentiment-analyzer
+   docker build -t sentiment-analyzer:1.0 .
+   docker run --rm -p 8000:8000 -p 8001:8001 -p 3000:3000 sentiment-analyzer:1.0
    ```
 
 6. **Access the application**
@@ -186,16 +189,17 @@ curl -X POST "http://localhost:8000/predict-all" \
 
 ---
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 ```bash
 # Build the image
 docker build -t sentiment-analyzer:1.0 .
 
 # Run the container
-docker run -d \
+docker run --rm -d \
   --name sentiment-app \
   -p 8000:8000 \
+  -p 8001:8001 \
   -p 3000:3000 \
   sentiment-analyzer:1.0
 
@@ -205,7 +209,7 @@ docker logs -f sentiment-app
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Category | Technology |
 |----------|------------|
@@ -219,7 +223,7 @@ docker logs -f sentiment-app
 
 ---
 
-## 📊 Model Performance
+##  Model Performance
 
 Models were trained on Twitter and Reddit sentiment datasets. Performance metrics:
 
@@ -233,7 +237,7 @@ Models were trained on Twitter and Reddit sentiment datasets. Performance metric
 
 ---
 
-## 🔧 Configuration
+##  Configuration
 
 ### Environment Variables
 
@@ -243,7 +247,7 @@ Models were trained on Twitter and Reddit sentiment datasets. Performance metric
 
 ---
 
-## 📝 Text Preprocessing
+##  Text Preprocessing
 
 The preprocessing pipeline includes:
 - Lowercase conversion
@@ -255,7 +259,7 @@ The preprocessing pipeline includes:
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -265,20 +269,21 @@ The preprocessing pipeline includes:
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👤 Author
+##  Author
 
 **Ayush Saini**
 - GitHub: [@ayushsainime](https://github.com/ayushsainime)
+- LinkedIn: [ayush_Saini]()
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Dataset: Twitter and Reddit Sentiment Analysis Dataset
 - Inspired by NLP best practices and ML classification techniques

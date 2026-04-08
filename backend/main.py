@@ -2,9 +2,8 @@
 # Main API application
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict
+from typing import Optional, List
 from enum import Enum
 import io
 import base64
@@ -14,7 +13,7 @@ import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
 
-from .models_loader import load_models, get_available_models
+from .models_loader import load_models
 from .preprocess import clean_text
 
 # Load models at startup
@@ -78,7 +77,7 @@ def home():
 @app.get("/models")
 def available_models_endpoint():
     """Get list of available models."""
-    return {"models": get_available_models()}
+    return {"models": list(models.keys())}
 
 
 def _get_prediction_with_confidence(model, X) -> tuple:
@@ -99,7 +98,7 @@ def _get_prediction_with_confidence(model, X) -> tuple:
         try:
             proba = model.predict_proba(X)[0]
             confidence = float(max(proba))
-        except:
+        except Exception:
             pass
     elif hasattr(model, 'decision_function'):
         try:
@@ -107,9 +106,9 @@ def _get_prediction_with_confidence(model, X) -> tuple:
             # Convert decision function to pseudo-confidence
             import numpy as np
             confidence = float(1 / (1 + np.exp(-abs(decision))))
-        except:
+        except Exception:
             pass
-    
+
     return sentiment_label, confidence
 
 
@@ -162,7 +161,11 @@ def predict_all(request: PredictionRequest):
         # Get predictions from all models
         results = []
         for model_name, model in models.items():
-            sentiment_label, confidence = _get_prediction_with_confidence(model, X)
+            try:
+                sentiment_label, confidence = _get_prediction_with_confidence(model, X)
+            except Exception:
+                # Keep the comparison response usable even if one model fails.
+                sentiment_label, confidence = "unknown", None
             results.append(ModelResult(
                 model_name=model_name,
                 prediction=sentiment_label,
