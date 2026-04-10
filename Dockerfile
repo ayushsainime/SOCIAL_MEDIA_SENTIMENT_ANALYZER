@@ -7,6 +7,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libgomp1 \
+    curl \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies in one resolver pass for compatibility stability
