@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Start FastAPI backend in background
+# Start FastAPI backend in background (internal service).
 uvicorn backend.main:app --host 0.0.0.0 --port 8000 &
 
-# Start Reflex app (frontend + Reflex backend) in foreground.
-# Use 8001 for Reflex backend so it doesn't conflict with FastAPI on 8000.
-reflex run --frontend-port 3000 --backend-port 8001
+# Start Reflex in production single-port mode for deployment.
+reflex run --env prod --single-port --backend-host 0.0.0.0 --backend-port 3000
