@@ -44,3 +44,4 @@ assets/external/
 __pycache__/
 old project\twitter-and-reddit-sentimental-analysis-dataset.ipynb
 old project\data\Twitter_Data.csv
+demo_narration_script.md

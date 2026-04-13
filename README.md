@@ -13,6 +13,7 @@
 [![License](https://img.shields.io/badge/License-MIT-F7DF1E?style=for-the-badge&logo=openbadges&logoColor=black)](./LICENSE)
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-HF_Spaces-FF6B00?style=for-the-badge)](https://huggingface.co/spaces/ayushsainime/SOCIAL_MEDIA_SENTIMENT_ANALYZER)
+[![YouTube Demo](https://img.shields.io/badge/🎬_Demo_Video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=nCxy4yyM42g)
 [![GitHub](https://img.shields.io/badge/Source_Code-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ayushsainime/Multi-Model-Sentiment-Classification-System-)
 
 ---
