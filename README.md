@@ -59,45 +59,6 @@
 | **Storage** | XET (HuggingFace) | — | Versioned model artifact storage |
 | **Containerization** | Docker | — | Isolated, reproducible deployment environment |
 
-### Data Flow
-
-```
- ┌──────────┐    HTTPS     ┌─────────────┐   WebSocket   ┌──────────────┐
- │   User    │ ──────────► │   Reflex     │ ◄──────────►  │   Reflex      │
- │  Browser  │             │   Frontend   │               │   Backend     │
- └──────────┘              │   :3000      │               │   :8001       │
-                           └─────────────┘               └──────┬───────┘
-                                                                │ HTTP POST
-                                                                ▼
-                                                        ┌──────────────┐
-                                                        │   FastAPI     │
-                                                        │   :8000       │
-                                                        └──────┬───────┘
-                                                               │
-                                                  ┌────────────▼────────────┐
-                                                  │    Text Preprocessing    │
-                                                  │  lowercase · URL · @     │
-                                                  │  HTML · special chars    │
-                                                  └────────────┬────────────┘
-                                                               │
-                                                               ▼
-                                                  ┌────────────────────────┐
-                                                  │   TF-IDF Vectorizer    │
-                                                  └────────────┬───────────┘
-                                                               │
-                                         ┌───────┬───────┬────┴────┬────────┬───────┐---------
-                                         ▼       ▼       ▼         ▼        ▼       ▼         |  
-                                       [SVM]   [RF]   [LR]    [GradBoost] [LGBM] [AdaBoost]   | 
-                                         │       │       │         │        │       │         | 
-                                         └───┬───┴───┬───┴────┬───-----------------------------        
-                                             │       │        │            │       │
-                                             ▼       ▼        ▼            ▼       ▼
-                                       ┌─────────────────────────────────────────┐
-                                       │    Sentiment: Positive / Neutral / Negative   │
-                                       │    Confidence: 0% — 100%                      │
-                                       └─────────────────────────────────────────┘
-```
-
 ---
 
 ## 🤖 Machine Learning Models
